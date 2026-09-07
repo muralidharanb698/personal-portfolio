@@ -1,0 +1,114 @@
+[
+{
+  "model": "projects.project",
+  "pk": 1,
+  "fields": {
+    "title": "Compliance Management System",
+    "description": "React + DRF ticket management app with JWT auth, 8+ REST endpoints, role-based access.",
+    "tech_stack": "React.js , Python django, DRF and JWT",
+    "live_link": "https://compliance-management-system-one.vercel.app",
+    "github_link": null,
+    "created_at": "2026-09-07T14:49:41.333Z"
+  }
+},
+{
+  "model": "projects.project",
+  "pk": 2,
+  "fields": {
+    "title": "PriceWise",
+    "description": "Product price comparison tool with data aggregation/normalization logic, React frontend, deployed on Vercel.",
+    "tech_stack": "React.js , Python django, DRF",
+    "live_link": "https://product-analyzer-kappa.vercel.app",
+    "github_link": null,
+    "created_at": "2026-09-07T14:50:24.211Z"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 1,
+  "fields": {
+    "name": "React.js",
+    "category": "frontend"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 2,
+  "fields": {
+    "name": "JavaScript (ES6+)",
+    "category": "frontend"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 3,
+  "fields": {
+    "name": "HTML5, CSS3",
+    "category": "frontend"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 4,
+  "fields": {
+    "name": "Python",
+    "category": "backend"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 5,
+  "fields": {
+    "name": "Django",
+    "category": "backend"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 6,
+  "fields": {
+    "name": "Django REST Framework (DRF)",
+    "category": "backend"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 7,
+  "fields": {
+    "name": "RESTful API design (GET, POST, PUT, DELETE)",
+    "category": "backend"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 8,
+  "fields": {
+    "name": "MySQL (production-style projects)",
+    "category": "database"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 9,
+  "fields": {
+    "name": "Git & GitHub (version control)",
+    "category": "tools"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 10,
+  "fields": {
+    "name": "VS Code, PyCharm",
+    "category": "tools"
+  }
+},
+{
+  "model": "projects.skill",
+  "pk": 11,
+  "fields": {
+    "name": "MySQL Workbench",
+    "category": "tools"
+  }
+}
+]
