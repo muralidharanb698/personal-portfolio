@@ -1,121 +1,145 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [projects, setProjects] = useState([])
+  const [skills, setSkills] = useState([])
+
+  useEffect(() => {
+  
+    axios
+      .get('http://127.0.0.1:8000/api/projects/')
+      .then((res) => {
+        console.log('Projects:', res.data)
+        setProjects(res.data)
+      })
+      .catch((err) => {
+        console.error('Projects error:', err)
+      })
+
+    axios
+      .get('http://127.0.0.1:8000/api/skills/')
+      .then((res) => {
+        console.log('Skills:', res.data)
+        setSkills(res.data)
+      })
+      .catch((err) => {
+        console.error('Skills error:', err)
+      })
+  }, [])
+  const categories = [
+    'Frontend',
+    'Backend',
+    'Database',
+    'Tools'
+  ]
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app">
+
+
+      <header className="hero">
+        <h1>Muralidharan B</h1>
+        <p>Full Stack Developer</p>
+      </header>
+
+
+      <section id="skills">
+
+        <h2>Skills</h2>
+
+        <div className="skills-grid">
+
+          {categories.map((category) => {
+
+            const categorySkills = skills.filter(
+              (skill) =>
+                skill.category.toLowerCase() ===
+                category.toLowerCase()
+            )
+
+            return (
+              <div
+                className="skill-category"
+                key={category}
+              >
+
+                <h3>
+                  {category.toUpperCase()}
+                </h3>
+
+                <div className="skill-list">
+
+                  {categorySkills.map((skill) => (
+                    <span
+                      className="skill"
+                      key={skill.id}
+                    >
+                      {skill.name}
+                    </span>
+                  ))}
+
+                </div>
+
+              </div>
+            )
+          })}
+
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+
       </section>
 
-      <div className="ticks"></div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section id="projects">
+
+        <h2>Projects</h2>
+
+        <div className="projects-container">
+
+          {projects.map((project) => (
+
+            <div
+              className="project-card"
+              key={project.id}
+            >
+
+              <h3>{project.title}</h3>
+
+              <p className="description">
+                {project.description}
+              </p>
+
+              <p className="tech">
+                <strong>Tech:</strong>{' '}
+                {project.tech_stack}
+              </p>
+
+              {project.live_link && (
+                <a
+                  href={project.live_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="live-button"
+                >
+                  Live Demo
+                </a>
+              )}
+
+            </div>
+
+          ))}
+
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+
+      <footer>
+        <p>Gmail: muralidharanb698@gmail.com</p>
+      </footer>
+
+    </div>
   )
 }
 
