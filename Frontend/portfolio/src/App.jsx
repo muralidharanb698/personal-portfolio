@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
   
     axios
-      .get('http://127.0.0.1:8000/api/projects/')
+      .get('https://personal-portfolio-m3mk.onrender.com/api/projects/')
       .then((res) => {
         console.log('Projects:', res.data)
         setProjects(res.data)
@@ -19,7 +19,7 @@ function App() {
       })
 
     axios
-      .get('http://127.0.0.1:8000/api/skills/')
+      .get('https://personal-portfolio-m3mk.onrender.com/api/skills/')
       .then((res) => {
         console.log('Skills:', res.data)
         setSkills(res.data)
