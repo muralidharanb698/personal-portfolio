@@ -60,7 +60,7 @@ ROOT_URLCONF = 'portfolio.urls'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://personal-portfolio-jkrd-8p3tsw74y.vercel.app",
+    "https://personal-portfolio-ten-beryl-90.vercel.app",
 ]
 
 TEMPLATES = [
